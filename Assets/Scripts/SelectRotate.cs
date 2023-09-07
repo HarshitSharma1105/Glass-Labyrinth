@@ -36,7 +36,7 @@ public class SelectRotate : MonoBehaviour
                 }
             }
         }
-        obj = gameobjects.Last();
+        if(gameobjects.Count > 0)obj = gameobjects.Last();
     }  
 
 
