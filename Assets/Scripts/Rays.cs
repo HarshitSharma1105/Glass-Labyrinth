@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -56,6 +55,7 @@ public class RaycastReflection : MonoBehaviour
 					{
                         Invoke("showwin2", 1f);
                         Debug.Log("weve won");
+						Invoke("GameComplete", 5f);
                     }
 				}
 				if (hit.collider.tag != "Mirror")
@@ -82,4 +82,9 @@ public class RaycastReflection : MonoBehaviour
 	{
 		SceneManager.LoadScene("Level2");
 	}
+
+	public void GameComplete()
+	{
+        SceneManager.LoadScene(0);
+    }
 }

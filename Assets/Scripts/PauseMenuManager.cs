@@ -36,7 +36,7 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenuPanel.SetActive(false);
 
         // Resume the game by setting the time scale to 1 (normal time)
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
 
         // Update the pause status
         isGamePaused = false;
@@ -48,7 +48,7 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenuPanel.SetActive(true);
 
         // Pause the game by setting the time scale to 0 (no time)
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
 
         // Update the pause status
         isGamePaused = true;
@@ -56,7 +56,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void Quit()
     {
