@@ -17,7 +17,7 @@ public class GameStartManager : MonoBehaviour
     void Update()
     {
         // Hide the instructions panel if the 'Escape' key is pressed
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             instructionsPanel.SetActive(false);
         }

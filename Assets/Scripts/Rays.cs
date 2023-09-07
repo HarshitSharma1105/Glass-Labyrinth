@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //[RequireComponent(typeof(LineRenderer))]
 public class RaycastReflection : MonoBehaviour
@@ -12,6 +14,10 @@ public class RaycastReflection : MonoBehaviour
 	private Ray ray;
 	private RaycastHit hit;
 	private Vector3 direction;
+
+    public GameObject win;
+    public GameObject win2;
+	public float count = 0f;
 
 	private void Awake()
 	{
@@ -36,7 +42,22 @@ public class RaycastReflection : MonoBehaviour
 				ray = new Ray(hit.point, Vector3.Reflect(ray.direction, hit.normal));
 				// if (hit.collider.tag != "Mirror")
 				// 	break;
-				if (hit.collider.tag == "Target") Debug.Log("weve won");	
+				if (hit.collider.tag == "Target")
+				{
+					count += 1.0f * Time.deltaTime;
+					
+					if (SceneManager.GetActiveScene().name == "Level1" && count>=1)
+					{
+						Invoke("showwin1", 1f);
+						Debug.Log("weve won");
+						Invoke("level2", 3f);
+					}
+					else if(count>=1)
+					{
+                        Invoke("showwin2", 1f);
+                        Debug.Log("weve won");
+                    }
+				}
 				if (hit.collider.tag != "Mirror")
 					break;
 			}
@@ -46,5 +67,19 @@ public class RaycastReflection : MonoBehaviour
 				lineRenderer.SetPosition(lineRenderer.positionCount - 1, ray.origin + ray.direction * (int)remainingLength);
 			}
 		}
+	}
+
+	public void showwin1()
+	{
+        win.SetActive(true);
+    }
+
+    public void showwin2()
+    {
+        win2.SetActive(true);
+    }
+    public void level2()
+	{
+		SceneManager.LoadScene("Level2");
 	}
 }

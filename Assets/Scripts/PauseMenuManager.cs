@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
@@ -29,7 +30,7 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         // Hide the pause menu panel
         pauseMenuPanel.SetActive(false);
@@ -41,7 +42,7 @@ public class PauseMenuManager : MonoBehaviour
         isGamePaused = false;
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         // Show the pause menu panel
         pauseMenuPanel.SetActive(true);
@@ -51,5 +52,14 @@ public class PauseMenuManager : MonoBehaviour
 
         // Update the pause status
         isGamePaused = true;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
