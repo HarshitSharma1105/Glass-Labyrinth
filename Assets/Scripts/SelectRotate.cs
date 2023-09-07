@@ -12,7 +12,7 @@ public class SelectRotate : MonoBehaviour
     Vector3 mouseinitial;
     Vector3 mouseend;
     public float speed = 0.01f;
-    public List<Tuple<GameObject,bool>> gameobjects=new List<Tuple<GameObject,bool>>();
+    public List<GameObject> gameobjects=new List<GameObject>();
  
     // Start is called before the first frame update
     void Start()
@@ -32,11 +32,11 @@ public class SelectRotate : MonoBehaviour
                     boxx = hitInfo.collider.gameObject;
                     rend = boxx.GetComponent<Renderer>();
                     rend.material.color = Color.yellow;
-                    gameobjects.Add(new Tuple<GameObject, bool>(boxx, true));
+                    gameobjects.Add(boxx);
                 }
             }
         }
-        obj = gameobjects.Last().Item1;
+        obj = gameobjects.Last();
     }  
 
 
