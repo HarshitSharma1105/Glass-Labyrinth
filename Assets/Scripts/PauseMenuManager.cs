@@ -8,6 +8,11 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject pauseMenuPanel;  // Reference to the pause menu panel in the UI
     public static bool isGamePaused = false;  // Indicates whether the game is currently paused
 
+    public void Start()
+    {
+        pauseMenuPanel.SetActive(false);
+    }
+
     void Update()
     {
         // Check for the "Escape" key to toggle pause
