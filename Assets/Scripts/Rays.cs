@@ -24,11 +24,11 @@ public class RaycastReflection : MonoBehaviour
 
 		lineRenderer.positionCount = 1;
 		lineRenderer.SetPosition(0, transform.position);
-		float remainingLength = maxLength;
-
+		double remainingLength = maxLength;
+		
 		for (int i = 0; i < reflections; i++)
 		{
-			if(Physics.Raycast(ray.origin, ray.direction, out hit, remainingLength))
+			if(Physics.Raycast(ray.origin, ray.direction, out hit, (int)remainingLength))
 			{
 				lineRenderer.positionCount += 1;
 				lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
@@ -43,7 +43,7 @@ public class RaycastReflection : MonoBehaviour
 			else
 			{
 				lineRenderer.positionCount += 1;
-				lineRenderer.SetPosition(lineRenderer.positionCount - 1, ray.origin + ray.direction * remainingLength);
+				lineRenderer.SetPosition(lineRenderer.positionCount - 1, ray.origin + ray.direction * (int)remainingLength);
 			}
 		}
 	}
