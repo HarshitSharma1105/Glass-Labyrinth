@@ -34,6 +34,9 @@ public class RaycastReflection : MonoBehaviour
 				lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
 				remainingLength -= Vector3.Distance(ray.origin, hit.point);
 				ray = new Ray(hit.point, Vector3.Reflect(ray.direction, hit.normal));
+				// if (hit.collider.tag != "Mirror")
+				// 	break;
+				if (hit.collider.tag == "Target") Debug.Log("weve won");	
 				if (hit.collider.tag != "Mirror")
 					break;
 			}
